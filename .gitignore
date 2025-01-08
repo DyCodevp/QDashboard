@@ -44,3 +44,6 @@ lerna-debug.log*
 bun.lockb
 bun
 ./bun.lockb
+
+# Vercel
+.vercel
