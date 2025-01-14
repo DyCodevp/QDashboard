@@ -13,6 +13,7 @@ export const Search = component$(({ placeholder }: { placeholder: string }) => {
   const handleSearch = $((term: string) => {
     console.log("SEARCH", term);
     const params = new URLSearchParams(searchParams);
+    params.set("page","1")
 
     term ? params.set("query", term) : params.delete("query");
 
