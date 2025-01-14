@@ -1,4 +1,3 @@
-// @ts-nocheck
 // src/components/ui/search.tsx
 
 import { $, component$ } from "@builder.io/qwik";

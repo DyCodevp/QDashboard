@@ -1,8 +1,8 @@
 // src/components/ui/invoices/table.tsx
 
-import { UpdateInvoice, DeleteInvoice } from "~/components/ui/invoices/buttons";
+import { DeleteInvoice, UpdateInvoice } from "~/components/ui/invoices/buttons";
 import { InvoiceStatus } from "~/components/ui/invoices/status";
-import { formatDateToLocal, formatCurrency } from "~/lib/utils";
+import { formatCurrency, formatDateToLocal } from "~/lib/utils";
 
 import { component$, Resource, useResource$ } from "@builder.io/qwik";
 import { useLocation } from "@builder.io/qwik-city";
@@ -136,7 +136,7 @@ export const Table = component$(() => {
       onPending={() => <InvoicesTableSkeleton />}
       onRejected={(error) => {
         console.error(error);
-        return <div>Error </div>;
+        return <div>Error</div>;
       }}
     />
   );
