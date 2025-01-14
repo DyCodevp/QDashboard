@@ -3,6 +3,7 @@
 import { $, component$ } from "@builder.io/qwik";
 import { useLocation, useNavigate } from "@builder.io/qwik-city";
 import { HiMagnifyingGlassOutline } from "@qwikest/icons/heroicons";
+import { useDebouncer } from "~/hooks/debouncer";
 
 export const Search = component$(({ placeholder }: { placeholder: string }) => {
   const loc = useLocation();
@@ -12,11 +13,13 @@ export const Search = component$(({ placeholder }: { placeholder: string }) => {
   const handleSearch = $((term: string) => {
     console.log("SEARCH", term);
     const params = new URLSearchParams(searchParams);
-    
+
     term ? params.set("query", term) : params.delete("query");
-    
+
     nav(`${path}?${params.toString()}`, { replaceState: true });
   });
+
+  const debouncedSearch = useDebouncer(handleSearch, 300);
   return (
     <div class="relative flex flex-1 flex-shrink-0">
       <label for="search" class="sr-only">
@@ -28,10 +31,10 @@ export const Search = component$(({ placeholder }: { placeholder: string }) => {
         id="search"
         onInput$={(e) => {
           const value = (e.target as HTMLInputElement).value;
-          handleSearch(value);
+          debouncedSearch(value);
         }}
-        defaultValue={searchParams.get("query")?.toString() }
-        // value={searchParams.get("query")?.toString() }
+        defaultValue={searchParams.get("query")?.toString()}
+      // value={searchParams.get("query")?.toString() }
       />
       <HiMagnifyingGlassOutline class="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
     </div>
