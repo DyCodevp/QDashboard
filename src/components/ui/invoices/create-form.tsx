@@ -1,6 +1,6 @@
 // src/components/ui/invoices/create-form.tsx
 
-import { Form, Link, routeAction$, useNavigate } from "@builder.io/qwik-city";
+import { Form, Link } from "@builder.io/qwik-city";
 
 import {
   HiCheckOutline,
@@ -23,12 +23,16 @@ export const CreateForm = component$(() => {
   const createInvoiceAction = useCreateInvoice();
   const formErrors = (errorObj) => {
     const keys = ["date", "customer_id", "amount", "status"];
-    for (let key of keys) {
+    for (const key of keys) {
       if (errorObj[key]) {
-        return <p>Error {key} is {errorObj[key]}</p>;
+        return (
+          <p>
+            Error {key} is {errorObj[key]}
+          </p>
+        );
       }
     }
-    return <p>Error desconocido</p>
+    return <p>Error desconocido</p>;
 
     // const Errors = array.map((error: string | undefined) => {
     //   if (typeof error === "undefined") return
@@ -66,7 +70,7 @@ export const CreateForm = component$(() => {
                 }}
               />
             </select>
-            <HiUserCircleOutline class="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+            <HiUserCircleOutline class="pointer-events-none absolute top-1/2 left-3 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
           </div>
         </div>
 
@@ -85,7 +89,7 @@ export const CreateForm = component$(() => {
                 placeholder="Enter USD amount"
                 class="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               />
-              <HiCurrencyDollarOutline class="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              <HiCurrencyDollarOutline class="pointer-events-none absolute top-1/2 left-3 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
         </div>
@@ -141,7 +145,7 @@ export const CreateForm = component$(() => {
         <Button type="submit">Create Invoice</Button>
       </div>
       {createInvoiceAction.value?.failed && (
-          <p>{formErrors(createInvoiceAction.value.fieldErrors)}</p>
+        <p>{formErrors(createInvoiceAction.value.fieldErrors)}</p>
       )}
     </Form>
   );

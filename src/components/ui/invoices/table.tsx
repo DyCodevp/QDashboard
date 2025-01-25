@@ -59,7 +59,7 @@ export const Table = component$(() => {
                         </div>
                         <div class="flex justify-end gap-2">
                           <UpdateInvoice id={invoice.id} />
-                          <DeleteInvoice  id={invoice.id}/>
+                          <DeleteInvoice id={invoice.id} />
                         </div>
                       </div>
                     </div>
@@ -83,7 +83,7 @@ export const Table = component$(() => {
                       <th scope="col" class="px-3 py-5 font-medium">
                         Status
                       </th>
-                      <th scope="col" class="relative py-3 pl-6 pr-3">
+                      <th scope="col" class="relative py-3 pr-3 pl-6">
                         <span class="sr-only">Edit</span>
                       </th>
                     </tr>
@@ -94,7 +94,7 @@ export const Table = component$(() => {
                         key={invoice.id}
                         class="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                       >
-                        <td class="whitespace-nowrap py-3 pl-6 pr-3">
+                        <td class="py-3 pr-3 pl-6 whitespace-nowrap">
                           <div class="flex items-center gap-3">
                             <img
                               src={invoice.image_url}
@@ -106,22 +106,22 @@ export const Table = component$(() => {
                             <p>{invoice.name}</p>
                           </div>
                         </td>
-                        <td class="whitespace-nowrap px-3 py-3">
+                        <td class="px-3 py-3 whitespace-nowrap">
                           {invoice.email}
                         </td>
-                        <td class="whitespace-nowrap px-3 py-3">
+                        <td class="px-3 py-3 whitespace-nowrap">
                           {formatCurrency(invoice.amount)}
                         </td>
-                        <td class="whitespace-nowrap px-3 py-3">
+                        <td class="px-3 py-3 whitespace-nowrap">
                           {formatDateToLocal(invoice.date)}
                         </td>
-                        <td class="whitespace-nowrap px-3 py-3">
+                        <td class="px-3 py-3 whitespace-nowrap">
                           <InvoiceStatus status={invoice.status} />
                         </td>
-                        <td class="whitespace-nowrap py-3 pl-6 pr-3">
+                        <td class="py-3 pr-3 pl-6 whitespace-nowrap">
                           <div class="flex justify-end gap-3">
-                            <UpdateInvoice id={invoice.id}/>
-                            <DeleteInvoice  id={invoice.id}/>
+                            <UpdateInvoice id={invoice.id} />
+                            <DeleteInvoice id={invoice.id} />
                           </div>
                         </td>
                       </tr>

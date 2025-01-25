@@ -1,4 +1,3 @@
-
 import { generateYAxis } from "~/lib/utils";
 import { HiCalendarOutline } from "@qwikest/icons/heroicons";
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
@@ -29,7 +28,7 @@ export const RevenueChart = component$(() => {
             <h2 class="lusitana mb-4 text-xl md:text-2xl">Recent Revenue</h2>
 
             <div class="rounded-xl bg-gray-50 p-4">
-              <div class=" mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 sm:grid-cols-13 md:gap-4">
+              <div class="mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 sm:grid-cols-13 md:gap-4">
                 <div
                   class="mb-6 hidden flex-col justify-between text-sm text-gray-400 sm:flex"
                   style={{ height: `${chartHeight}px` }}
@@ -56,9 +55,9 @@ export const RevenueChart = component$(() => {
                   </div>
                 ))}
               </div>
-              <div class="flex items-center pb-2 pt-6">
+              <div class="flex items-center pt-6 pb-2">
                 <HiCalendarOutline class="h-5 w-5 text-gray-500" />
-                <h3 class="ml-2 text-sm text-gray-500 ">Last 12 months</h3>
+                <h3 class="ml-2 text-sm text-gray-500">Last 12 months</h3>
               </div>
             </div>
           </div>

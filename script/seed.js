@@ -25,8 +25,8 @@ async function seedUsers(client) {
     const insertedUsers = await Promise.all(
       users.map(async (user) => {
         const hashedPassword = await Bun.password.hash(user.password, {
-          algorithm:"bcrypt",
-          cost:10,
+          algorithm: "bcrypt",
+          cost: 10,
         });
         return client.sql`
         INSERT INTO users (id, name, email, password)

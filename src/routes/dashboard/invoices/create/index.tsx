@@ -16,10 +16,10 @@ const FormSchema = z.object({
 });
 
 // Create a new Zod schema for the form
-const CreateInvoiceSchema = FormSchema.omit({ id: true,date:true });
+const CreateInvoiceSchema = FormSchema.omit({ id: true, date: true });
 
-export const useCreateInvoice = routeAction$(async (data,{redirect}) => {
-  await createInvoice(data)
+export const useCreateInvoice = routeAction$(async (data, { redirect }) => {
+  await createInvoice(data);
   throw redirect(302, "/dashboard/invoices");
 }, zod$(CreateInvoiceSchema));
 

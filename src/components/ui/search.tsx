@@ -13,7 +13,7 @@ export const Search = component$(({ placeholder }: { placeholder: string }) => {
   const handleSearch = $((term: string) => {
     console.log("SEARCH", term);
     const params = new URLSearchParams(searchParams);
-    params.set("page","1")
+    params.set("page", "1");
 
     term ? params.set("query", term) : params.delete("query");
 
@@ -35,9 +35,9 @@ export const Search = component$(({ placeholder }: { placeholder: string }) => {
           debouncedSearch(value);
         }}
         defaultValue={searchParams.get("query")?.toString()}
-      // value={searchParams.get("query")?.toString() }
+        // value={searchParams.get("query")?.toString() }
       />
-      <HiMagnifyingGlassOutline class="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+      <HiMagnifyingGlassOutline class="absolute top-1/2 left-3 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
     </div>
   );
 });

@@ -33,10 +33,7 @@ export const Card = component$(
           <Icon class="h-5 w-5 text-gray-700" />
           <h3 class="ml-2 text-sm font-medium">{title}</h3>
         </div>
-        <p
-          class="lusitana
-          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl"
-        >
+        <p class="lusitana truncate rounded-xl bg-white px-4 py-8 text-center text-2xl">
           {value}
         </p>
       </div>

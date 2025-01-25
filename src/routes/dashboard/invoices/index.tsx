@@ -4,13 +4,12 @@ import { Search } from "~/components/ui/search";
 import { Table } from "~/components/ui/invoices/table";
 import { CreateInvoice } from "~/components/ui/invoices/buttons";
 import { routeAction$ } from "@builder.io/qwik-city";
-import {deleteInvoice} from "~/lib/actions"
+import { deleteInvoice } from "~/lib/actions";
 
 export const useDeleteInvoice = routeAction$(async (data, { redirect }) => {
-  const expectResult =  await deleteInvoice(data.id.toString());
-  console.log("LOG-DELETE",expectResult);
-  
-  
+  const expectResult = await deleteInvoice(data.id.toString());
+  console.log("LOG-DELETE", expectResult);
+
   throw redirect(302, "/dashboard/invoices");
 });
 export default component$(() => {

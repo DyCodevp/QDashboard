@@ -18,7 +18,7 @@ export const Pagination = component$(() => {
     const query = searchParams.get("query") || "";
     return fetchInvoicesPages(query);
   });
-    const createPageURL = (pageNumber: number | string) => {
+  const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(loc.url.searchParams);
     params.set("page", pageNumber.toString());
     return `${loc.url.pathname}?${params.toString()}`;
@@ -106,13 +106,13 @@ const PaginationNumber = component$(
       " " +
       (position === "middle" ? "text-gray-300" : "");
 
-    return isActive || position === "middle"
-      ? <div class={className}>{page}</div>
-      : (
-        <Link href={href} class={className}>
-          {page}
-        </Link>
-      );
+    return isActive || position === "middle" ? (
+      <div class={className}>{page}</div>
+    ) : (
+      <Link href={href} class={className}>
+        {page}
+      </Link>
+    );
   },
 );
 
@@ -126,20 +126,23 @@ const PaginationArrow = component$(
     direction: "left" | "right";
     isDisabled?: boolean;
   }) => {
-    const className =
-      `flex h-10 w-10 items-center justify-center rounded-md border ${isDisabled ? "pointer-events-none text-gray-300" : "hover:bg-gray-100"
-      } ${direction === "left" ? "mr-2 md:mr-4" : "ml-2 md:ml-4"}`;
+    const className = `flex h-10 w-10 items-center justify-center rounded-md border ${
+      isDisabled ? "pointer-events-none text-gray-300" : "hover:bg-gray-100"
+    } ${direction === "left" ? "mr-2 md:mr-4" : "ml-2 md:ml-4"}`;
 
-    const icon = direction === "left"
-      ? <HiArrowLeftOutline class="w-4" />
-      : <HiArrowRightOutline class="w-4" />;
-
-    return isDisabled
-      ? <div class={className}>{icon}</div>
-      : (
-        <Link class={className} href={href}>
-          {icon}
-        </Link>
+    const icon =
+      direction === "left" ? (
+        <HiArrowLeftOutline class="w-4" />
+      ) : (
+        <HiArrowRightOutline class="w-4" />
       );
+
+    return isDisabled ? (
+      <div class={className}>{icon}</div>
+    ) : (
+      <Link class={className} href={href}>
+        {icon}
+      </Link>
+    );
   },
 );

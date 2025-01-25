@@ -17,10 +17,10 @@ export const useEditInvoiceAction = routeAction$(
   async (data, { redirect, params }) => {
     const dataWithId = { ...data, id: params.id };
     console.log(dataWithId);
-    
+
     const l = await editInvoice(dataWithId);
-    console.log("RESULT",l);
-    
+    console.log("RESULT", l);
+
     throw redirect(302, "/dashboard/invoices");
   },
   zod$(FormSchemaEdit),

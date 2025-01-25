@@ -1,7 +1,6 @@
 import { component$, Slot } from "@builder.io/qwik";
 import { SideNav } from "~/components/ui/dashboard/sidenav";
 
-
 export default component$(() => {
   return (
     <div class="flex h-screen flex-col md:flex-row md:overflow-hidden">

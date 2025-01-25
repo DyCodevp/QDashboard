@@ -5,7 +5,6 @@ import {
   useOnDocument,
   useSignal,
 } from "@builder.io/qwik";
-import { server$ } from "@builder.io/qwik-city";
 import { HiMoonSolid } from "@qwikest/icons/heroicons";
 import { DatePicker } from "qwik-date";
 import { CalendarInline } from "qwik-date/inline";
@@ -13,7 +12,7 @@ function useDoEvent() {
   const message = useSignal("light");
   useOnDocument(
     "darkmode",
-    $((event) => {
+    $(() => {
       const theme = document.documentElement.className;
       message.value = theme;
     }),
@@ -26,12 +25,12 @@ export default component$(() => {
   const day = useSignal(23);
   const month = useSignal(12);
   const year = useSignal(2024);
-  const date = useComputed$<`${number}-${number}-${number}`>(() =>
-    `${year.value}-${month.value}-${day.value}`
+  const date = useComputed$<`${number}-${number}-${number}`>(
+    () => `${year.value}-${month.value}-${day.value}`,
   );
 
   return (
-    <div class="dark:bg-slate-900 flex items-center justify-center w-full h-screen">
+    <div class="flex h-screen w-full items-center justify-center dark:bg-slate-900">
       <DatePicker
         date={date.value}
         onDateChange$={(newDate) => {
@@ -46,7 +45,7 @@ export default component$(() => {
         }}
         triggerLabel={date.value}
         locale="es"
-        triggerProps={{class:"color:blue"}}
+        triggerProps={{ class: "color:blue" }}
       />
 
       <CalendarInline

@@ -15,10 +15,9 @@ export const SideNav = component$(() => {
           <LRDQwikLogo />
         </div>
       </Link>
-      <div class="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
+      <div class="flex grow flex-row justify-between space-x-2 md:flex-col md:space-y-2 md:space-x-0">
         <NavLinks />
-        <div class="hidden h-auto w-full grow rounded-md bg-gray-50 md:block">
-        </div>
+        <div class="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
         <form>
           <button class="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
             <HiPowerOutline class="w-6" />

@@ -5,7 +5,6 @@ import { RevenueChart } from "~/components/ui/dashboard/revenue-chart";
 import { CardsWrapper } from "~/components/ui/dashboard/cards";
 import { LatestInvoices } from "~/components/ui/dashboard/latest-invoices";
 
-
 export default component$(() => {
   return (
     <main>

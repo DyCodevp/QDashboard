@@ -3,7 +3,6 @@
 import { component$, Resource, useResource$ } from "@builder.io/qwik";
 import { HiArrowPathOutline } from "@qwikest/icons/heroicons";
 import { fetchLatestInvoices } from "~/lib/data";
-import type { LatestInvoice } from "~/lib/definitions";
 import { LatestInvoicesSkeleton } from "../skeletons";
 
 export const LatestInvoices = component$(() => {
@@ -27,8 +26,10 @@ export const LatestInvoices = component$(() => {
                   return (
                     <div
                       key={invoice.id}
-                      class={"flex flex-row items-center justify-between py-4" +
-                        (i !== 0 ? " border-t" : "")}
+                      class={
+                        "flex flex-row items-center justify-between py-4" +
+                        (i !== 0 ? " border-t" : "")
+                      }
                     >
                       <div class="flex items-center">
                         <img
@@ -56,9 +57,9 @@ export const LatestInvoices = component$(() => {
                   );
                 })}
               </div>
-              <div class="flex items-center pb-2 pt-6">
+              <div class="flex items-center pt-6 pb-2">
                 <HiArrowPathOutline class="h-5 w-5 text-gray-500" />
-                <h3 class="ml-2 text-sm text-gray-500 ">Updated just now</h3>
+                <h3 class="ml-2 text-sm text-gray-500">Updated just now</h3>
               </div>
             </div>
           </div>
