@@ -1,11 +1,16 @@
 // src/lib/data.ts
 
 import { createPool } from "@vercel/postgres";
-import { LatestInvoice, Revenue,InvoicesTable } from "./definitions";
+import {
+  CustomerField,
+  InvoicesTable,
+  LatestInvoice,
+  Revenue,
+} from "./definitions";
 import { formatCurrency } from "./utils";
 import { server$ } from "@builder.io/qwik-city";
 
-const getPool = server$(function() {
+export const getPool = server$(function() {
   const connectionString = this.env.get("POSTGRES_URL"); // Get the connection string from the environment variables
   if (!connectionString) {
     throw new Error("POSTGRES_URL environment variable is not set");
@@ -141,11 +146,11 @@ export const fetchFilteredInvoices = server$(async function(
   }
 });
 
-
-export const fetchInvoicesPages = server$(async function (query: string) {
+export const fetchInvoicesPages = server$(async function(query: string) {
   const pool = await getPool();
   try {
-    const count = await pool.query(`SELECT COUNT(*)
+    const count = await pool.query(
+      `SELECT COUNT(*)
       FROM invoices
       JOIN customers ON invoices.customer_id = customers.id
       WHERE
@@ -154,15 +159,59 @@ export const fetchInvoicesPages = server$(async function (query: string) {
         invoices.amount::text ILIKE $1 OR
         invoices.date::text ILIKE $1 OR
         invoices.status ILIKE $1
-    `, [`%${query}%`]);
+    `,
+      [`%${query}%`],
+    );
 
     const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
     return totalPages;
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch total number of invoices.');
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch total number of invoices.");
   } finally {
     await pool.end();
   }
 });
+export const fetchCustomers = server$(async function() {
+  const pool = await getPool();
+  try {
+    const data = await pool.query<CustomerField>(
+      "SELECT id, name FROM customers ORDER BY name ASC",
+    );
+    const customers = data.rows;
+    return customers;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch all customers.");
+  } finally {
+    await pool.end();
+  }
+});
+export const fetchInvoiceById = server$(async (id: string) => {
+  const pool = await getPool();
+  try {
+    const data = await pool.query<InvoicesTable>(
+      `
+      SELECT
+        invoices.id,
+        invoices.customer_id,
+        invoices.amount,
+        invoices.status
+      FROM invoices
+      WHERE invoices.id = $1;
+    `,
+      [id],
+    );
 
+    const invoice = data.rows.map((invoice) => ({
+      ...invoice,
+      amount: invoice.amount / 100,
+    }));
+    return invoice[0];
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch invoice.");
+  } finally {
+    await pool.end();
+  }
+});

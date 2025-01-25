@@ -28,3 +28,8 @@ export type InvoicesTable = {
   email: string;
   image_url: string | undefined;
 };
+
+export type CustomerField = {
+  id: string;
+  name: string;
+};

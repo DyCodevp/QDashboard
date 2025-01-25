@@ -1,6 +1,6 @@
 // src/components/ui/invoices/create-form.tsx
 
-import { Link, Form, useNavigate } from "@builder.io/qwik-city";
+import { Form, Link, routeAction$, useNavigate } from "@builder.io/qwik-city";
 
 import {
   HiCheckOutline,
@@ -12,6 +12,7 @@ import { Button } from "~/components/ui/button";
 import { component$, Resource, useResource$ } from "@builder.io/qwik";
 
 import { fetchCustomers } from "~/lib/data";
+import { useCreateInvoice } from "~/routes/dashboard/invoices/create";
 
 export const CreateForm = component$(() => {
   const customersResource = useResource$(async () => {
@@ -19,8 +20,25 @@ export const CreateForm = component$(() => {
     return customers;
   });
 
+  const createInvoiceAction = useCreateInvoice();
+  const formErrors = (errorObj) => {
+    const keys = ["date", "customer_id", "amount", "status"];
+    for (let key of keys) {
+      if (errorObj[key]) {
+        return <p>Error {key} is {errorObj[key]}</p>;
+      }
+    }
+    return <p>Error desconocido</p>
+
+    // const Errors = array.map((error: string | undefined) => {
+    //   if (typeof error === "undefined") return
+    //   return <p>Error: {error}</p>
+    // }
+    // )
+    // return Errors
+  };
   return (
-    <Form>
+    <Form action={createInvoiceAction}>
       <div class="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div class="mb-4">
@@ -122,6 +140,9 @@ export const CreateForm = component$(() => {
         </Link>
         <Button type="submit">Create Invoice</Button>
       </div>
+      {createInvoiceAction.value?.failed && (
+          <p>{formErrors(createInvoiceAction.value.fieldErrors)}</p>
+      )}
     </Form>
   );
 });
