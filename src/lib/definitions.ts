@@ -23,7 +23,7 @@ export type InvoicesTable = {
   id: string;
   amount: number;
   date: string;
-  status: string;
+  status: "pending" | "paid";
   name: string;
   email: string;
   image_url: string | undefined;
@@ -33,3 +33,9 @@ export type CustomerField = {
   id: string;
   name: string;
 };
+export type InvoiceForm = {
+  id: string,
+  customer_id: string,
+  amount:number,
+  status: "pending" | "paid";
+}

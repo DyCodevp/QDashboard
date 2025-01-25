@@ -6,9 +6,11 @@ import {
   HiCurrencyDollarOutline,
   HiUserCircleOutline,
 } from "@qwikest/icons/heroicons";
-import { Form, Link } from "@builder.io/qwik-city";
+import { Form, Link, routeAction$ } from "@builder.io/qwik-city";
 import { Button } from "~/components/ui/button";
 import { component$ } from "@builder.io/qwik";
+import { useEditInvoiceAction} from "~/routes/dashboard/invoices/[id]/edit";
+
 
 export const EditInvoiceForm = component$(
   ({
@@ -18,8 +20,9 @@ export const EditInvoiceForm = component$(
     invoice: InvoiceForm;
     customers: CustomerField[];
   }) => {
+    const editInvoiceAction = useEditInvoiceAction()
     return (
-      <Form>
+      <Form action={editInvoiceAction}>
         <div class="rounded-md bg-gray-50 p-4 md:p-6">
           {/* Customer Name */}
           <div class="mb-4">
