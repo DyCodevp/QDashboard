@@ -28,7 +28,7 @@ export const Card = component$(
     const Icon = iconMap[type];
 
     return (
-      <div class="rounded-xl bg-gray-50 p-2 shadow-sm">
+      <div class="rounded-xl bg-gray-50 p-2 shadow-xs">
         <div class="flex p-4">
           <Icon class="h-5 w-5 text-gray-700" />
           <h3 class="ml-2 text-sm font-medium">{title}</h3>

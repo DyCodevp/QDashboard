@@ -22,7 +22,7 @@ export const Search = component$(({ placeholder }: { placeholder: string }) => {
 
   const debouncedSearch = useDebouncer(handleSearch, 300);
   return (
-    <div class="relative flex flex-1 flex-shrink-0">
+    <div class="relative flex flex-1 shrink-0">
       <label for="search" class="sr-only">
         Search
       </label>

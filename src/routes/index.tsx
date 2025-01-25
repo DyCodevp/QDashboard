@@ -8,7 +8,7 @@ import HeroImgSM from "~/assets/img/heroMobileImg.png?jsx"
 export default component$(() => {
   return (
     <main class="flex min-h-screen flex-col p-6">
-      <div class="flex h-20 shrink-0 items-end rounded-lg  bg-gradient-to-br from-[#00E5FF]  to-[#1200FF]  p-4 md:h-52">
+      <div class="flex h-20 shrink-0 items-end rounded-lg  bg-linear-to-br from-[#00E5FF]  to-[#1200FF]  p-4 md:h-52">
          <LRDQwikLogo />
       </div>
       <div class="mt-4 flex grow flex-col gap-4 md:flex-row">

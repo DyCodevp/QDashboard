@@ -2,12 +2,12 @@ import { component$ } from "@builder.io/qwik";
 
 // Loading animation
 const shimmer =
-  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
+  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-linear-to-r before:from-transparent before:via-white/60 before:to-transparent";
 
 export const CardSkeleton = component$(() => {
   return (
     <div
-      class={`${shimmer} relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-sm`}
+      class={`${shimmer} relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-xs`}
     >
       <div class="flex p-4">
         <div class="h-5 w-5 rounded-md bg-gray-200" />
@@ -108,30 +108,30 @@ export const TableRowSkeleton = component$(() => {
       <td class="relative overflow-hidden whitespace-nowrap py-3 pl-6 pr-3">
         <div class="flex items-center gap-3">
           <div class="h-8 w-8 rounded-full bg-gray-100"></div>
-          <div class="h-6 w-24 rounded bg-gray-100"></div>
+          <div class="h-6 w-24 rounded-sm bg-gray-100"></div>
         </div>
       </td>
       {/* Email */}
       <td class="whitespace-nowrap px-3 py-3">
-        <div class="h-6 w-32 rounded bg-gray-100"></div>
+        <div class="h-6 w-32 rounded-sm bg-gray-100"></div>
       </td>
       {/* Amount */}
       <td class="whitespace-nowrap px-3 py-3">
-        <div class="h-6 w-16 rounded bg-gray-100"></div>
+        <div class="h-6 w-16 rounded-sm bg-gray-100"></div>
       </td>
       {/* Date */}
       <td class="whitespace-nowrap px-3 py-3">
-        <div class="h-6 w-16 rounded bg-gray-100"></div>
+        <div class="h-6 w-16 rounded-sm bg-gray-100"></div>
       </td>
       {/* Status */}
       <td class="whitespace-nowrap px-3 py-3">
-        <div class="h-6 w-16 rounded bg-gray-100"></div>
+        <div class="h-6 w-16 rounded-sm bg-gray-100"></div>
       </td>
       {/* Actions */}
       <td class="whitespace-nowrap py-3 pl-6 pr-3">
         <div class="flex justify-end gap-3">
-          <div class="h-[38px] w-[38px] rounded bg-gray-100"></div>
-          <div class="h-[38px] w-[38px] rounded bg-gray-100"></div>
+          <div class="h-[38px] w-[38px] rounded-sm bg-gray-100"></div>
+          <div class="h-[38px] w-[38px] rounded-sm bg-gray-100"></div>
         </div>
       </td>
     </tr>
@@ -144,18 +144,18 @@ export const InvoicesMobileSkeleton = component$(() => {
       <div class="flex items-center justify-between border-b border-gray-100 pb-8">
         <div class="flex items-center">
           <div class="mr-2 h-8 w-8 rounded-full bg-gray-100"></div>
-          <div class="h-6 w-16 rounded bg-gray-100"></div>
+          <div class="h-6 w-16 rounded-sm bg-gray-100"></div>
         </div>
-        <div class="h-6 w-16 rounded bg-gray-100"></div>
+        <div class="h-6 w-16 rounded-sm bg-gray-100"></div>
       </div>
       <div class="flex w-full items-center justify-between pt-4">
         <div>
-          <div class="h-6 w-16 rounded bg-gray-100"></div>
-          <div class="mt-2 h-6 w-24 rounded bg-gray-100"></div>
+          <div class="h-6 w-16 rounded-sm bg-gray-100"></div>
+          <div class="mt-2 h-6 w-24 rounded-sm bg-gray-100"></div>
         </div>
         <div class="flex justify-end gap-2">
-          <div class="h-10 w-10 rounded bg-gray-100"></div>
-          <div class="h-10 w-10 rounded bg-gray-100"></div>
+          <div class="h-10 w-10 rounded-sm bg-gray-100"></div>
+          <div class="h-10 w-10 rounded-sm bg-gray-100"></div>
         </div>
       </div>
     </div>
