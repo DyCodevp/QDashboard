@@ -21,12 +21,14 @@ export type Revenue = {
 };
 export type InvoicesTable = {
   id: string;
+  customer_id:string
   amount: number;
   date: string;
   status: "pending" | "paid";
   name: string;
   email: string;
   image_url: string | undefined;
+  
 };
 
 export type CustomerField = {
@@ -35,7 +37,7 @@ export type CustomerField = {
 };
 export type InvoiceForm = {
   id: string,
-  customer_id: string,
+  customer_id: string;
   amount:number,
   status: "pending" | "paid";
 }

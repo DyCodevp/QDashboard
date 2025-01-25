@@ -30,13 +30,16 @@ export const UpdateInvoice = component$(({ id }: { id: string }) => {
   );
 });
 
-export const DeleteInvoice = component$(({id}:{id:string}) => {
-  const deleteInvoiceAction = useDeleteInvoice()
+export const DeleteInvoice = component$(({ id }: { id: string }) => {
+  const deleteInvoiceAction = useDeleteInvoice();
   return (
     <>
-      <button onClick$={async()=>{
-        await deleteInvoiceAction.submit({id}) 
-      }} class="rounded-md border p-2 hover:bg-gray-100">
+      <button
+        onClick$={async () => {
+          await deleteInvoiceAction.submit({ id });
+        }}
+        class="rounded-md border p-2 hover:bg-gray-100"
+      >
         <span class="sr-only">Delete</span>
         <HiTrashOutline class="w-5" />
       </button>
