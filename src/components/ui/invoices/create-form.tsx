@@ -21,7 +21,7 @@ export const CreateForm = component$(() => {
   });
 
   const createInvoiceAction = useCreateInvoice();
-  const formErrors = (errorObj) => {
+  const formErrors = (errorObj:any) => {
     const keys = ["date", "customer_id", "amount", "status"];
     for (const key of keys) {
       if (errorObj[key]) {
