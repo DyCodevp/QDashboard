@@ -1,4 +1,3 @@
-// src/routes/dashboard/index.tsx
 
 import { component$ } from "@builder.io/qwik";
 import { RevenueChart } from "~/components/ui/dashboard/revenue-chart";
