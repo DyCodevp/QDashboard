@@ -1,4 +1,3 @@
-// src/lib/data.ts
 
 import { createPool } from "@vercel/postgres";
 import {
@@ -10,7 +9,7 @@ import {
 import { formatCurrency } from "./utils";
 import { server$ } from "@builder.io/qwik-city";
 
-export const getPool = server$(function() {
+export const getPool = server$(function () {
   const connectionString = this.env.get("POSTGRES_URL"); // Get the connection string from the environment variables
   if (!connectionString) {
     throw new Error("POSTGRES_URL environment variable is not set");
@@ -26,7 +25,7 @@ export const getPool = server$(function() {
   return pool;
 });
 
-export const fetchRevenue = server$(async function() {
+export const fetchRevenue = server$(async function () {
   // Open a new connection
   const pool = await getPool();
   try {
@@ -43,7 +42,7 @@ export const fetchRevenue = server$(async function() {
   }
 });
 
-export const fetchLatestInvoices = server$(async function() {
+export const fetchLatestInvoices = server$(async function () {
   const pool = await getPool();
   try {
     const data = await pool.query(`
@@ -66,7 +65,7 @@ export const fetchLatestInvoices = server$(async function() {
   }
 });
 
-export const fetchCardData = server$(async function() {
+export const fetchCardData = server$(async function () {
   const pool = await getPool();
   try {
     // You can probably combine these into a single pool.query query
@@ -106,7 +105,7 @@ export const fetchCardData = server$(async function() {
 
 const ITEMS_PER_PAGE = 6;
 
-export const fetchFilteredInvoices = server$(async function(
+export const fetchFilteredInvoices = server$(async function (
   query: string,
   currentPage: number,
 ) {
@@ -146,7 +145,7 @@ export const fetchFilteredInvoices = server$(async function(
   }
 });
 
-export const fetchInvoicesPages = server$(async function(query: string) {
+export const fetchInvoicesPages = server$(async function (query: string) {
   const pool = await getPool();
   try {
     const count = await pool.query(
@@ -172,7 +171,7 @@ export const fetchInvoicesPages = server$(async function(query: string) {
     await pool.end();
   }
 });
-export const fetchCustomers = server$(async function() {
+export const fetchCustomers = server$(async function () {
   const pool = await getPool();
   try {
     const data = await pool.query<CustomerField>(
