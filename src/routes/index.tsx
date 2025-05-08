@@ -1,8 +1,8 @@
 import { component$ } from "@builder.io/qwik";
 import { type DocumentHead, Link } from "@builder.io/qwik-city";
 import { HiArrowRightOutline } from "@qwikest/icons/heroicons";
-import HeroImg from "~/assets/img/heroImg.png?jsx";
-import HeroImgSM from "~/assets/img/heroMobileImg.png?jsx";
+import HeroImg from "~/assets/img/heroImgQDash.png?jsx";
+import HeroImgSM from "~/assets/img/heroMobileImgQDash.png?jsx";
 
 export default component$(() => {
   return (
@@ -36,11 +36,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Welcome to QDash",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "Web to manage your invoices",
     },
   ],
 };
