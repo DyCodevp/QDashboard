@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import { Link, useNavigate } from "@builder.io/qwik-city";
-import { LRDQwikLogo } from "~/assets/svg/LRDQwikLogo";
 import { HiPowerOutline } from "@qwikest/icons/heroicons";
 import { NavLinks } from "./nav-links";
 

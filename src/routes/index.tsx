@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { type DocumentHead, Link } from "@builder.io/qwik-city";
 import { HiArrowRightOutline } from "@qwikest/icons/heroicons";
-import { LRDQwikLogo } from "~/assets/svg/LRDQwikLogo";
 import HeroImg from "~/assets/img/heroImg.png?jsx";
 import HeroImgSM from "~/assets/img/heroMobileImg.png?jsx";
 
